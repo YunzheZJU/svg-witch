@@ -19,7 +19,19 @@ module.exports = (env, argv) => {
           test: /\.vue$/,
           loader: 'vue-loader',
         },
+        {
+          test: /\.js$/,
+          use: {
+            loader: '@sucrase/webpack-loader',
+            options: {
+              transforms: [],
+            },
+          },
+        },
       ],
+    },
+    resolve: {
+      extensions: ['.js', '.json', '.vue'],
     },
     plugins: [
       new VueLoaderPlugin(),
