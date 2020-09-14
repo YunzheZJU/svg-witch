@@ -201,7 +201,7 @@
       <svg x="50%" y="50%" height="20" fill="currentColor" color="white">
         <svg x="-50%" y="-50%" width="100%" height="100%" style="overflow: hidden">
           <use :xlink:href="`#sym_label_${version}`" y="-100%" height="90%">
-            <AnimateV id="anim_label" attributeName="y" to="5%" begin="anim_title_mask_shrink.begin+0.15"
+            <AnimateV :id="endAnimateId" attributeName="y" to="5%" begin="anim_title_mask_shrink.begin+0.15"
                       dur="0.5"></AnimateV>
           </use>
         </svg>
@@ -221,6 +221,10 @@
         type: [Number, String],
         required: true,
         validator: value => (1 <= +value && +value <= 6),
+      },
+      endAnimateId: {
+        type: String,
+        validator: value => value.indexOf(' ') === -1,
       },
     },
   }
