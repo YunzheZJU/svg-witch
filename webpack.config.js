@@ -28,6 +28,19 @@ module.exports = (env, argv) => {
             },
           },
         },
+        {
+          test: /\.css$/,
+          use: [
+            'vue-style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                // See: https://github.com/vuejs/vue-style-loader/issues/46
+                esModule: false,
+              },
+            },
+          ],
+        },
       ],
     },
     resolve: {

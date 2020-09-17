@@ -12,9 +12,11 @@
   },
   "devDependencies": {
     "@sucrase/webpack-loader": "^2.0.0",
+    "css-loader": "^4.3.0",
     "html-webpack-plugin": "^4.4.1",
     "sucrase": "^3.15.0",
     "vue-loader": "^15.9.3",
+    "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",

@@ -1,6 +1,6 @@
 <template>
   <component :is="attributeName === 'transform' ? 'animateTransform' : 'animate'"
-             v-bind="{id, attributeName, type, from, to, values, begin, dur, keyTimes, keySplines, fill, calcMode}"
+             v-bind="{id, attributeName, type, from, to, values, begin, dur, keyTimes: times, keySplines: splines, fill, calcMode}"
              v-on="$listeners"></component>
 </template>
 
@@ -38,16 +38,19 @@
         default: 'ease',
         validator: value => [...SplineMap.keys()].indexOf(value) !== -1,
       },
+      keyTimes: String,
+      keySplines: String,
     },
     computed: {
-      keySplines() {
+      splines() {
+        const spline = this.keySplines ?? SplineMap.get(this.easing)
         const length = this.values?.split(';')?.length ?? 2
 
-        return new Array(length - 1).fill(SplineMap.get(this.easing)).join(';')
+        return new Array(length - 1).fill(spline).join(';')
       },
-      keyTimes() {
+      times() {
         // TODO: Support values
-        return '0;1'
+        return this.keyTimes ?? '0;1'
       },
       fill() {
         return 'freeze'
